@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prop Regulator — User Personas</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --paper: #f5f0e8;
+    --warm-mid: #e8dfc8;
+    --accent: #c8411a;
+    --accent-soft: #f0d5cb;
+    --rule: #d4c9b0;
+    --muted: #7a7265;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    padding: 60px 40px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  header {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0 20px;
+    margin-bottom: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .wordmark {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .doc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .doc-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  .persona {
+    margin-bottom: 72px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 0;
+    border-top: 1px solid var(--ink);
+    padding-top: 36px;
+  }
+
+  .persona-sidebar {
+    padding-right: 40px;
+    border-right: 1px solid var(--rule);
+  }
+
+  .persona-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .persona-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .persona-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+
+  .persona-vitals {
+    list-style: none;
+    font-size: 12px;
+    line-height: 2;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .persona-vitals li span {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .quote-block {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 14px 16px;
+    margin-top: 24px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .persona-body {
+    padding-left: 40px;
+  }
+
+  .section {
+    margin-bottom: 28px;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .section p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 3px 10px;
+    background: var(--warm-mid);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+  }
+
+  .tag.red {
+    background: var(--accent-soft);
+    border-color: #daa090;
+    color: var(--accent);
+  }
+
+  .secret-box {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 20px;
+    margin-top: 4px;
+  }
+
+  .secret-box p {
+    font-size: 13px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--paper);
+  }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    margin-top: 40px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 680px) {
+    .persona { grid-template-columns: 1fr; }
+    .persona-sidebar { border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 24px; margin-bottom: 24px; }
+    .persona-body { padding-left: 0; }
+    header { flex-direction: column; gap: 12px; }
+    .doc-meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="wordmark">Prop Regulator — Research Document</div>
+    <div class="doc-title">User Personas</div>
+  </div>
+  <div class="doc-meta">
+    Version 1.0<br>
+    March 2026<br>
+    3 Profiles
+  </div>
+</header>
+
+<!-- PERSONA 1 -->
+<div class="persona">
+  <div class="persona-sidebar">
+    <div class="persona-number">Persona 01 / 03</div>
+    <div class="persona-name">Renate Hoffmann</div>
+    <div class="persona-title">Retired Teacher</div>
+    <ul class="persona-vitals">
+      <li>Age: <span>67</span></li>
+      <li>Location: <span>Freiburg</span></li>
+      <li>Home: <span>Owner, 1978 semi-detached</span></li>
+      <li>Tech: <span>Moderate</span></li>
+      <li>Income: <span>Fixed pension</span></li>
+    </ul>
+    <div class="quote-block">
+      "I just want to widen my bathroom door. My neighbour said I need an architect. For a door?"
+    </div>
+  </div>
+  <div class="persona-body">
+
+    <div class="section">
+      <div class="section-label">Daily Workflow</div>
+      <p>Renate wakes at 7am, reads the newspaper with coffee, tends her garden, and cooks lunch for herself and sometimes her daughter. She checks email twice a day and uses WhatsApp to stay in touch with family. Her afternoons are spent at a Volkshochschule watercolour class or walking her dog, Bruno. She manages her finances carefully in a paper ledger. Any "admin" task — a phone call to an office, a form to fill — takes her significant emotional energy to initiate.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Psychological Drivers</div>
+      <div class="tag-row">
+        <span class="tag">Independence</span>
+        <span class="tag">Not being a burden</span>
+        <span class="tag">Pride in her home</span>
+        <span class="tag">Fear of being cheated</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Decision-Making Process</div>
+      <p>Renate asks her daughter first, then a neighbour. She distrusts anything that feels "too easy" — if the answer comes too fast she assumes something is wrong. She will read the same document three times before acting. She needs to feel she understands <em>why</em> a rule exists, not just what it is. A human she trusts is worth more than any app, but she's open to tools if her daughter vouches for them.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Biggest Frustrations</div>
+      <p>The Bauamt told her she'd need to submit a formal Bauantrag for structural changes — she doesn't know if widening a door counts. The architect she called quoted €800 "just for the consultation." She found a PDF from the Landratsamt but it was 47 pages. She closed it. She feels the system is not built for her, and she's right.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Secret Motivation</div>
+      <div class="secret-box">
+        <p>Her husband passed two years ago. The house modifications are about staying in the home they built together — not just for accessibility, but because leaving would feel like losing him a second time. She will not say this to anyone, including her daughter.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PERSONA 2 -->
+<div class="persona">
+  <div class="persona-sidebar">
+    <div class="persona-number">Persona 02 / 03</div>
+    <div class="persona-name">Tobias Bergmann</div>
+    <div class="persona-title">Logistics Operations Manager</div>
+    <ul class="persona-vitals">
+      <li>Age: <span>41</span></li>
+      <li>Location: <span>Hannover</span></li>
+      <li>Home: <span>Owner, 2003 Reihenhaus</span></li>
+      <li>Tech: <span>High</span></li>
+      <li>Income: <span>€72k / year</span></li>
+    </ul>
+    <div class="quote-block">
+      "I've got twins on the way. I need to know if I can build an Anbau in the next 18 months. Not the theory — the actual answer."
+    </div>
+  </div>
+  <div class="persona-body">
+
+    <div class="section">
+      <div class="section-label">Daily Workflow</div>
+      <p>Tobias starts work at 7:30, managing a team of 14 across two distribution hubs via Teams and their internal TMS. He solves problems under time pressure all day — missed deliveries, driver disputes, system outages. He's home by 6:30, cooks with his wife Lena, and has maybe 90 minutes in the evening before he's too tired to focus. He uses apps for everything: banking, grocery delivery, car maintenance reminders. He genuinely enjoys research but has no patience for friction.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Psychological Drivers</div>
+      <div class="tag-row">
+        <span class="tag">Control over outcomes</span>
+        <span class="tag">Efficiency</span>
+        <span class="tag">Providing for family</span>
+        <span class="tag red">Distrust of professionals who gatekeep</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Decision-Making Process</div>
+      <p>Tobias is a systematic researcher. He'll spend two evenings reading forums, comparing quotes, building a spreadsheet. He wants data before he talks to anyone — showing up to a professional meeting uninformed feels like a failure. Once he has enough signal, he decides fast and doesn't second-guess. He tests tools on real problems immediately; if it doesn't give him something actionable in ten minutes, he abandons it.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Biggest Frustrations</div>
+      <p>He got three conflicting answers from three different architects about whether his Bebauungsplan allows a rear extension. One said definitely yes, one said "it depends," one said he'd need to commission a full survey first. He's spent €400 on preliminary consultations and knows less than when he started. He's furious that a process this important is this opaque, and he's vocal about it in online communities for homeowners.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Secret Motivation</div>
+      <div class="secret-box">
+        <p>Tobias grew up in a cramped flat in Dortmund. His parents rented their whole lives and never owned anything. This house — and the extension — is proof that he did something different. He needs it to work not just practically but symbolically, and he'd never admit how much that weighs on him.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PERSONA 3 -->
+<div class="persona">
+  <div class="persona-sidebar">
+    <div class="persona-number">Persona 03 / 03</div>
+    <div class="persona-name">Miriam Osei-Bonsu</div>
+    <div class="persona-title">Freelance Graphic Designer</div>
+    <ul class="persona-vitals">
+      <li>Age: <span>34</span></li>
+      <li>Location: <span>Leipzig</span></li>
+      <li>Home: <span>Owner, 1930s Altbau flat</span></li>
+      <li>Tech: <span>Very high</span></li>
+      <li>Income: <span>Variable, avg. €48k</span></li>
+    </ul>
+    <div class="quote-block">
+      "I want to convert my spare room into a proper studio — maybe rent it to clients for shoots. But the WEG, the Finanzamt, the Bauamt — I don't know which world this problem even lives in."
+    </div>
+    </div>
+  <div class="persona-body">
+
+    <div class="section">
+      <div class="section-label">Daily Workflow</div>
+      <p>Miriam works from home on brand and packaging projects, usually from 10am to 7pm with long creative stretches interrupted by client calls. She manages her own invoicing, taxes, and contracts — she's used to navigating bureaucracy alone but it costs her time she resents losing. She's active on Instagram, reads design blogs obsessively, and discovers new tools through her freelancer Slack community. She adopts early and recommends loudly when something works.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Psychological Drivers</div>
+      <div class="tag-row">
+        <span class="tag">Creative autonomy</span>
+        <span class="tag">Financial stability</span>
+        <span class="tag">Being taken seriously</span>
+        <span class="tag red">Anxiety about "doing it wrong"</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Decision-Making Process</div>
+      <p>Miriam maps problems visually — she's drawn an actual diagram of who governs what for her flat renovation question. She's comfortable with ambiguity in creative work but finds legal ambiguity genuinely destabilising. She will wait longer than is rational for certainty before spending money. She checks in with two or three trusted freelancer friends before hiring any professional, and she will publicly review services (positively and negatively) on relevant forums.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Biggest Frustrations</div>
+      <p>Her Wohnungseigentümergemeinschaft has a 70-page Teilungserklärung she can barely parse. She's not sure if her planned changes are a bauliche Veränderung requiring WEG approval, a purely cosmetic change, or something that touches building law as well. She called her Hausverwaltung and was told to "consult a lawyer." The lawyer quoted €300/hr. She earns €80/hr. The math stings.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Secret Motivation</div>
+      <div class="secret-box">
+        <p>Buying the flat was the first major thing Miriam did that her parents — who immigrated from Ghana and rented all their lives in Germany — saw as proof of arrival. She wants to make it into something remarkable, partly for herself and partly as a monument to what they built. She treats every renovation setback as a small defeat she can't explain to them.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <span>Prop Regulator — Internal Research</span>
+  <span>3 Personas · March 2026</span>
+</footer>
+
+</body>
+</html>
