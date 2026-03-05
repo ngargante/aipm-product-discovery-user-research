@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RechtImmobilien — Research Executive Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --paper: #f5f0e8;
+    --warm-mid: #e8dfc8;
+    --accent: #c8411a;
+    --accent-soft: #f0d5cb;
+    --rule: #d4c9b0;
+    --muted: #7a7265;
+    --green: #2a5c3f;
+    --green-soft: #d4e8dc;
+    --amber: #7a5c1a;
+    --amber-soft: #f0e4c8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    padding: 48px 40px;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  /* ── Header ── */
+  header {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 20px 0 18px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .wordmark {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .doc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+  }
+
+  .doc-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.9;
+  }
+
+  /* ── Core finding ── */
+  .core-finding {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .core-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    line-height: 1.6;
+  }
+
+  .core-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--paper);
+  }
+
+  /* ── Section labels ── */
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ── Findings grid ── */
+  .findings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .finding-card {
+    border-left: 3px solid var(--rule);
+    padding: 14px 16px;
+    background: white;
+  }
+
+  .finding-card.strong {
+    border-left-color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .finding-card.concern {
+    border-left-color: var(--amber);
+    background: var(--amber-soft);
+  }
+
+  .finding-title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+
+  .finding-body {
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  .finding-tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    padding: 2px 8px;
+    margin-bottom: 8px;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .tag-signal { background: var(--accent-soft); color: var(--accent); border: 1px solid #daa090; }
+  .tag-risk { background: var(--amber-soft); color: var(--amber); border: 1px solid #c8a870; }
+  .tag-gap { background: var(--warm-mid); color: var(--muted); border: 1px solid var(--rule); }
+
+  /* ── Recommendations ── */
+  .rec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    margin-bottom: 40px;
+    border: 1px solid var(--ink);
+  }
+
+  .rec-col {
+    padding: 20px 20px 24px;
+  }
+
+  .rec-col:not(:last-child) {
+    border-right: 1px solid var(--ink);
+  }
+
+  .rec-col-header {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .rec-col-header.do-now { color: var(--green); }
+  .rec-col-header.plan { color: var(--amber); }
+  .rec-col-header.discuss { color: var(--accent); }
+
+  .rec-col-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .rec-item {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .rec-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .rec-item-title {
+    font-weight: 500;
+    font-size: 12.5px;
+    margin-bottom: 4px;
+  }
+
+  .rec-item-body {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #3a3530;
+  }
+
+  .rec-col.do-now-col { background: var(--green-soft); }
+  .rec-col.plan-col { background: var(--amber-soft); }
+  .rec-col.discuss-col { background: var(--accent-soft); }
+
+  /* ── Persona signals strip ── */
+  .persona-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .persona-card {
+    border-top: 2px solid var(--ink);
+    padding-top: 14px;
+  }
+
+  .persona-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .persona-role {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+
+  .persona-signal {
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .persona-blocker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 8px;
+    margin-top: 8px;
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 720px) {
+    .findings-grid, .rec-grid, .persona-strip { grid-template-columns: 1fr; }
+    .rec-col:not(:last-child) { border-right: none; border-bottom: 1px solid var(--ink); }
+    .core-finding { grid-template-columns: 1fr; }
+    header { flex-direction: column; gap: 10px; }
+    .doc-meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="wordmark">RechtImmobilien — Research Document</div>
+    <div class="doc-title">User Research: Executive Summary</div>
+  </div>
+  <div class="doc-meta">
+    Synthetic interviews · 3 personas<br>
+    Prototype: RechtImmobilien v1<br>
+    March 2026
+  </div>
+</header>
+
+<!-- Core finding -->
+<div class="core-finding">
+  <div class="core-label">Core finding</div>
+  <div class="core-text">The pain users feel is not the cost of getting legal advice — it is the absence of anyone willing to give a straight answer and stand behind it. RechtImmobilien directly addresses this. The product's credibility, not its feature set, is what will determine adoption.</div>
+</div>
+
+<!-- Key findings -->
+<div class="section-label">Key findings from user interviews</div>
+<div class="findings-grid">
+
+  <div class="finding-card strong">
+    <div class="finding-tag tag-signal">Strongest signal</div>
+    <div class="finding-title">Legal citations land across all three personas</div>
+    <div class="finding-body">The Legal Sources panel — specific §§ with per-source confidence scores — was the single most consistent positive reaction. Renate found citations reassuring without reading them. Tobias saw them as the tool to walk into architect meetings as an equal. Miriam used them as evidence of legal grounding for generated documents. <strong>This feature works differently for each user, but it works for all of them.</strong></div>
+  </div>
+
+  <div class="finding-card concern">
+    <div class="finding-tag tag-risk">Conversion blocker</div>
+    <div class="finding-title">The accountability gap blocks engagement before the first question</div>
+    <div class="finding-body">No persona saw a named professional or clear liability statement. Renate asked "who is responsible if it's wrong?" before typing anything. Miriam wouldn't use the document generator without proof a Rechtsanwalt reviewed the template. <strong>For cautious users, this is not a post-use concern — it stops them from engaging at all.</strong></div>
+  </div>
+
+  <div class="finding-card concern">
+    <div class="finding-tag tag-risk">Usability gap</div>
+    <div class="finding-title">Geographic scope is invisible — and users notice</div>
+    <div class="finding-body">Both Renate (Freiburg) and Tobias (Hannover) asked: is this answer for all of Germany or just for Berlin? The chat placeholder example — "Can I rent out my apartment in Berlin short-term?" — signals Berlin-only scope to users outside the capital. <strong>A simple copy fix could resolve one of the most common friction points.</strong></div>
+  </div>
+
+  <div class="finding-card concern">
+    <div class="finding-tag tag-risk">Feature gap</div>
+    <div class="finding-title">Users don't know which law governs their question</div>
+    <div class="finding-body">Miriam had literally drawn a diagram — WEG, Baurecht, Steuerrecht — trying to map which authority her problem belonged to. The same confusion appeared implicitly in Tobias's Bebauungsplan question. <strong>Without a jurisdiction classifier upfront, users may get technically correct answers that still feel unresolved.</strong></div>
+  </div>
+
+  <div class="finding-card">
+    <div class="finding-tag tag-gap">Opportunity</div>
+    <div class="finding-title">The Permit Wizard is the right entry point for action-oriented users</div>
+    <div class="finding-body">Tobias navigated to the Permit Wizard within 20 seconds. The step-by-step checklist matched the process map he had been building manually on a spreadsheet. The gap: the wizard is generic, not address-specific. He couldn't verify feasibility for his actual plot in Hannover.</div>
+  </div>
+
+  <div class="finding-card">
+    <div class="finding-tag tag-gap">Opportunity</div>
+    <div class="finding-title">Confidence scores need a "why" — not just a number</div>
+    <div class="finding-body">Tobias appreciated per-citation scores over a single answer-level score, but immediately asked: is a low score because the law is ambiguous, or because the AI is missing my local data? <strong>These require completely different responses from the user.</strong> A tooltip explaining the source of uncertainty would close this loop.</div>
+  </div>
+
+</div>
+
+<!-- Persona signals -->
+<div class="section-label">Key signal per persona</div>
+<div class="persona-strip">
+
+  <div class="persona-card">
+    <div class="persona-name">Renate Hoffmann</div>
+    <div class="persona-role">Retired Teacher · Freiburg · 67</div>
+    <div class="persona-signal">Found the product's serious design reassuring. Noticed citations as a source of accountability — not because she read them, but because they proved "someone is responsible." Would share the answer with her daughter before acting.</div>
+    <div class="persona-blocker">Conversion blocker: No named human professional visible before the chat input.</div>
+  </div>
+
+  <div class="persona-card">
+    <div class="persona-name">Tobias Bergmann</div>
+    <div class="persona-role">Logistics Manager · Hannover · 41</div>
+    <div class="persona-signal">Near-converted on the citations feature — he can print BauGB §35, BauNVO §19 and bring them to the architect meeting. Half-passed his 10-minute test. Would post a public review either way. His referral network is large and active.</div>
+    <div class="persona-blocker">Conversion blocker: Wizard is generic, not address-specific. Can't validate his actual Hannover plot.</div>
+  </div>
+
+  <div class="persona-card">
+    <div class="persona-name">Miriam Osei-Bonsu</div>
+    <div class="persona-role">Freelance Designer · Leipzig · 34</div>
+    <div class="persona-signal">Immediately excited by the visual design and the WEG mention. Most desired feature: Rechtssichere Schreiben. Would post in her 200-person freelancer Slack the same day if it solves her studio conversion question. High-leverage referral node.</div>
+    <div class="persona-blocker">Conversion blocker: No proof the document template is procedurally valid for a WEG Eigentümerversammlung.</div>
+  </div>
+
+</div>
+
+<!-- Recommendations -->
+<div class="section-label">Recommendations</div>
+<div class="rec-grid">
+
+  <div class="rec-col do-now-col">
+    <div class="rec-col-header do-now">Do now</div>
+    <div class="rec-col-sub">Prototype changes this week — no backend work required</div>
+
+    <div class="rec-item">
+      <div class="rec-item-title">Move citations above the fold</div>
+      <div class="rec-item-body">The Legal Sources panel is currently below a long answer body. Users who don't scroll will never see it — and it's the strongest conversion feature we have. Move it to a sticky sidebar or directly below the answer summary.</div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-item-title">Add trust copy above the chat input</div>
+      <div class="rec-item-body">One line: "Answers backed by licensed Rechtsanwälte and specific §§ citations." This directly addresses the pre-engagement accountability gap that Renate and Miriam both flagged — and it's a copy change, not a product change.</div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-item-title">Fix the Berlin placeholder example</div>
+      <div class="rec-item-body">Replace "Can I rent out my apartment in Berlin short-term?" with a location-neutral example, or add a Bundesland prompt. Users outside Berlin read the current placeholder as "this is for Berlin, not me."</div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-item-title">Add a print / export button to answers</div>
+      <div class="rec-item-body">Both Renate and Tobias want to bring the answer to a trusted person (daughter, architect) or file it with their house documents. A browser print button or PDF export costs minimal dev time and directly enables the referral loop.</div>
+    </div>
+  </div>
+
+  <div class="rec-col plan-col">
+    <div class="rec-col-header plan">Plan and build</div>
+    <div class="rec-col-sub">Requires design and development — prioritise by archetype value</div>
+
+    <div class="rec-item">
+      <div class="rec-item-title">Pre-chat jurisdiction triage</div>
+      <div class="rec-item-body">Two questions before the chat opens: "What type of property do you own?" and "What are you trying to do?" Routes the question, sets AI context, and — critically — tells users which legal domain their problem lives in before they type. Miriam named this as the missing feature most likely to make her pay.</div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-item-title">Address-specific data integration</div>
+      <div class="rec-item-body">Enter your address, the system pulls your Bebauungsplan, GRZ and GFZ values, and setback requirements. This is the feature that converts the Permit Wizard from theoretical to actionable for Tobias-type users. Complex to build but defines whether the product can serve power users at all.</div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-item-title">Municipal wait time layer</div>
+      <div class="rec-item-body">Add current Bauamt processing times per city to the Permit Wizard step estimates. Tobias noted the current "2–3 months" estimate is from 2019; Hannover is running 9–11 months. Real data here is a major differentiator over static guides.</div>
+    </div>
+  </div>
+
+  <div class="rec-col discuss-col">
+    <div class="rec-col-header discuss">Discuss as a team</div>
+    <div class="rec-col-sub">Open questions requiring product and legal alignment</div>
+
+    <div class="rec-item">
+      <div class="rec-item-title">What does a low confidence score actually mean?</div>
+      <div class="rec-item-body">A score of 2/5 on a citation could mean the law itself is ambiguous (user should consult a specialist) or that the AI is missing local data (user should provide their Bebauungsplan and re-run). These require completely different actions. The product needs to surface the <em>cause</em> of uncertainty, not just the number. How do we classify and communicate this?</div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-item-title">Who is the accountable human — and what is our liability position?</div>
+      <div class="rec-item-body">Users across all three segments asked for a named professional behind the answers. A real named Rechtsanwalt carries legal and liability implications. A "reviewed by legal professionals" badge is softer. What is our actual relationship with legal oversight? This decision shapes trust architecture across the whole product.</div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-item-title">Is the Renate segment actually in our ICP?</div>
+      <div class="rec-item-body">Renate (60+, moderate tech, fixed pension) has the highest conversion friction and is unlikely to find us organically. She may be reachable only through referral from her trusted circle — a different acquisition strategy entirely. Do we design for her now, or treat her as a later segment reached via Miriam and Tobias's networks?</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>RechtImmobilien — Internal Research · Not for external distribution</span>
+  <span>Synthetic interviews · 3 personas · March 2026</span>
+</footer>
+
+</body>
+</html>
